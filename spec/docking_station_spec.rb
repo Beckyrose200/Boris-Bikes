@@ -30,10 +30,26 @@ describe DockingStation do
 
   end
 
+  it "adds a bike to the docking station" do
+    docking_station = DockingStation.new
+    new_bike = Bike.new
+    docking_station.docking(new_bike)
+    expect(docking_station.docked_bikes.empty?).to eq false
+
+  end
+  
+  it 'checked if there is a bike docked' do
+    docking_station = DockingStation.new
+    new_bike = Bike.new
+    docking_station.docking(new_bike)
+    expect(docking_station.docked_bikes[0]).to be new_bike
+  end 
+
 end
 
 
 
-# expect( This_is_what_we_test_for ).to eq What_we_compare_to
-# Add a test to your spec file that expects DockingStation instances to respond_to the method release_bike
-# Rewrite this test using RSpec's one-liner syntax
+#  Use an instance variable with attr_reader to do a full test-implementation cycle for the second User Story above
+# As a member of the public
+# So I can decide whether to use the docking station
+# I want to see a bike that has been docked
