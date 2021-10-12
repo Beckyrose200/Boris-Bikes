@@ -1,13 +1,25 @@
 
 require 'dockingstation'
+require 'bike'
 
 describe DockingStation do 
+
   it "will recognise release bike" do
     docking_station = DockingStation.new
     actual = docking_station.respond_to?(:release_bike)
     expected = true
     expect(actual).to(eq(expected))
   end
+
+  it "returns a bike, when release_bike is called" do
+
+    docking_station = DockingStation.new
+    expected = Bike
+    actual = (docking_station.release_bike).class
+    expect(actual).to be expected 
+
+  end
+
 end
 
 
