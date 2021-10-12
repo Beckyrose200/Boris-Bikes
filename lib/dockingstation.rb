@@ -11,6 +11,9 @@ class DockingStation
   end
 
   def docking(bike)
+   unless @docked_bikes.empty?
+    raise "Already at capacity"
+   end
     @docked_bikes.push(bike)
   end 
 end 

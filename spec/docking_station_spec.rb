@@ -54,11 +54,22 @@ describe DockingStation do
     expect{docking_station.release_bike}.to raise_error("NoBikeError")
   end
 
+  it 'does not accept any new bikes once capcaity is hit (1 bike already docked)' do
+    docking_station = DockingStation.new
+    new_bike = Bike.new
+    docking_station.docking(new_bike)
+    new_bike1 = Bike.new
+    expect{docking_station.docking(new_bike1)}.to raise_error("Already at capacity")
+  end 
+
 end
 
 
 
-#  Use an instance variable with attr_reader to do a full test-implementation cycle for the second User Story above
-# As a member of the public
-# So I can decide whether to use the docking station
-# I want to see a bike that has been docked
+# As a maintainer of the system,
+# So that I can control the distribution of bikes,
+# I'd like docking stations not to accept more bikes than their capacity.
+
+# Write RSpec tests that expect errors
+# Use fail or raise to raise an error
+# Use a 'guard condition'
