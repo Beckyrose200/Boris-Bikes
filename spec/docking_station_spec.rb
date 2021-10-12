@@ -20,6 +20,16 @@ describe DockingStation do
 
   end
 
+  it "returns a bike, which is working" do
+    
+    docking_station = DockingStation.new
+    new_bike = docking_station.release_bike
+    actual = new_bike.working?
+    expected = true
+    expect(actual).to be expected
+
+  end
+
 end
 
 
