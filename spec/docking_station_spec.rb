@@ -14,6 +14,8 @@ describe DockingStation do
   it "returns a bike, when release_bike is called" do
 
     docking_station = DockingStation.new
+    new_bike = Bike.new 
+    docking_station.docking(new_bike)
     expected = Bike
     actual = (docking_station.release_bike).class
     expect(actual).to be expected 
@@ -23,6 +25,8 @@ describe DockingStation do
   it "returns a bike, which is working" do
     
     docking_station = DockingStation.new
+    new_bike = Bike.new 
+    docking_station.docking(new_bike)
     new_bike = docking_station.release_bike
     actual = new_bike.working?
     expected = true
@@ -44,6 +48,11 @@ describe DockingStation do
     docking_station.docking(new_bike)
     expect(docking_station.docked_bikes[0]).to be new_bike
   end 
+
+  it 'does not return a bike, when there are none' do
+    docking_station = DockingStation.new
+    expect{docking_station.release_bike}.to raise_error("NoBikeError")
+  end
 
 end
 
